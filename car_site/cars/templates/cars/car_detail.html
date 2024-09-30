@@ -1,0 +1,16 @@
+<!-- cars/car_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ car.year }} {{ car.make }} {{ car.model }}</title>
+</head>
+<body>
+    <h1>{{ car.year }} {{ car.make }} {{ car.model }}</h1>
+    <img src="{{ car.image.url }}" alt="{{ car.model }}" style="max-width: 400px;">
+    <p>Price: ${{ car.price }}</p>
+    <p>{{ car.description }}</p>
+    <a href="{% url 'car_list' %}">Back to Car Listings</a>
+</body>
+</html>

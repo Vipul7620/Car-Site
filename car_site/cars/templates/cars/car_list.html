@@ -1,0 +1,32 @@
+<!-- cars/templates/cars/car_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car List</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Car List</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="myfile">
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if uploaded_file_url %}
+        <h2>Uploaded Image:</h2>
+        <img src="{{ uploaded_file_url }}" alt="Uploaded Car" width="300">
+    {% endif %}
+
+    <h2>Available Cars</h2>
+    <ul>
+        {% for car in cars %}
+            <li>{{ car.name }}</li>
+            <img src="{{ car.image.url }}" alt="{{ car.name }}" width="200">
+        {% endfor %}
+    </ul>
+</body>
+</html>
